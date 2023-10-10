@@ -3,12 +3,10 @@ package agh.ics.oop;
 
 import agh.ics.oop.model.MoveDirection;
 
-import java.util.Arrays;
-
 public class World {
     public static void main(String[] args) {
         System.out.println("System wystartował");
-        run(OptionsParser.Convert(args));
+        run(OptionsParser.convert(args));
         System.out.println("System zakończył działanie");
     }
 
