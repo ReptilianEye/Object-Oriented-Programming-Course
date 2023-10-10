@@ -6,29 +6,31 @@ import java.util.Arrays;
 
 public class OptionsParser {
     public static MoveDirection[] convert(String[] args) {
-        MoveDirection[] Orders = {};
+        MoveDirection[] Orders = new MoveDirection[args.length];
+        int n = 0;
         for (var order : args) {
             switch (order) {
                 case "f" -> {
-                    Orders = Arrays.copyOf(Orders, Orders.length + 1);
-                    Orders[Orders.length - 1] = MoveDirection.FORWARD;
+                    Orders[n] = MoveDirection.FORWARD;
+                    n++;
                 }
                 case "d" -> {
-                    Orders = Arrays.copyOf(Orders, Orders.length + 1);
-                    Orders[Orders.length - 1] = MoveDirection.BACKWARD;
+                    Orders[n] = MoveDirection.BACKWARD;
+                    n++;
                 }
                 case "r" -> {
-                    Orders = Arrays.copyOf(Orders, Orders.length + 1);
-                    Orders[Orders.length - 1] = MoveDirection.RIGHT;
+                    Orders[n] = MoveDirection.RIGHT;
+                    n++;
                 }
                 case "l" -> {
-                    Orders = Arrays.copyOf(Orders, Orders.length + 1);
-                    Orders[Orders.length - 1] = MoveDirection.LEFT;
+                    Orders[n] = MoveDirection.LEFT;
+                    n++;
                 }
-                default -> {}
+                default -> {
+                }
             }
         }
-        return Orders;
+        return Arrays.copyOfRange(Orders, 0, n);
 
     }
 }
