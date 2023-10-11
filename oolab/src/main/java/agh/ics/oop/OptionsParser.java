@@ -5,7 +5,7 @@ import agh.ics.oop.model.MoveDirection;
 import java.util.Arrays;
 
 public class OptionsParser {
-    public static MoveDirection[] convert(String[] args) {
+    public static MoveDirection[] parse(String[] args) {
         MoveDirection[] Orders = new MoveDirection[args.length];
         int n = 0;
         for (var order : args) {
@@ -27,6 +27,7 @@ public class OptionsParser {
                     n++;
                 }
                 default -> {
+//                    nothing to do
                 }
             }
         }

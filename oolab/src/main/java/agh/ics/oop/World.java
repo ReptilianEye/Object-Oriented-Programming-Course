@@ -6,7 +6,7 @@ import agh.ics.oop.model.MoveDirection;
 public class World {
     public static void main(String[] args) {
         System.out.println("System wystartował");
-        run(OptionsParser.convert(args));
+        run(OptionsParser.parse(args));
         System.out.println("System zakończył działanie");
     }
 
