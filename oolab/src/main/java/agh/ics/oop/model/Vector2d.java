@@ -1,4 +1,4 @@
-package agh.ics.oop;
+package agh.ics.oop.model;
 
 public class Vector2d {
     private final int x;
@@ -40,11 +40,15 @@ public class Vector2d {
     public Vector2d upperRight(Vector2d other) {
         return new Vector2d(Math.max(this.getX(), other.getX()), Math.max(this.getY(), other.getY()));
     }
-    public Vector2d opposite(){
-        return new Vector2d(-this.getX(),-this.getY());
+
+    public Vector2d opposite() {
+        return new Vector2d(-this.getX(), -this.getY());
     }
-    public boolean equals(Object other){
-        return true
+
+    public boolean equals(Object other) {
+//        if (other.getClass().equals(this.getClass()))
+//        TODO
+            return true;
     }
 
 }
