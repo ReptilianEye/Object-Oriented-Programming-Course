@@ -1,11 +1,10 @@
 package agh.ics.oop.model;
 
-import java.util.Map;
 
 public enum MapDirection {
 
     NORTH, EAST, SOUTH, WEST;
-    private final MapDirection[] vals = values();
+    private static final MapDirection[] vals = values();
 
     public String toString() {
         return switch (this) {
