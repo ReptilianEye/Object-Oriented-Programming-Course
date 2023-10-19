@@ -18,11 +18,11 @@ public class Vector2d {
     }
 
     public String toString() {
-        return String.format("(%d,%d)", this.x, this.y);
+        return String.format("(%d,%d)", this.getX(), this.getY());
     }
 
     public boolean precedes(Vector2d other) {
-        return this.x <= other.getX() && this.getY() <= other.y;
+        return this.getX() <= other.getX() && this.getY() <= other.getY();
     }
 
     public boolean follows(Vector2d other) {
@@ -40,15 +40,23 @@ public class Vector2d {
     public Vector2d upperRight(Vector2d other) {
         return new Vector2d(Math.max(this.getX(), other.getX()), Math.max(this.getY(), other.getY()));
     }
+    public Vector2d lowerLeft(Vector2d other) {
+        return new Vector2d(Math.min(this.getX(), other.getX()), Math.min(this.getY(), other.getY()));
+    }
 
     public Vector2d opposite() {
         return new Vector2d(-this.getX(), -this.getY());
     }
 
     public boolean equals(Object other) {
-//        if (other.getClass().equals(this.getClass()))
-//        TODO
+        if (this == other)
             return true;
+        if (!(other instanceof Vector2d that))
+            return false;
+        return this.getX()==that.getX() && this.getY()==that.getY();
     }
 
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
 }
