@@ -9,9 +9,11 @@ public class Vector2dTest {
         Vector2d main = new Vector2d(1, 1);
         int t = 1;
         Vector2d another = new Vector2d(1, 2);
+        Vector2d nullObj = null;
         Vector2d same = new Vector2d(1, 1);
         Assertions.assertTrue(main.equals(main), "Should be equal with itself");
         Assertions.assertFalse(main.equals(t), "Should not be equals with object of different type");
+        Assertions.assertFalse(main.equals(nullObj), "Should not be equals with null object");
         Assertions.assertFalse(main.equals(another), "Should not be equals with Vector2d of different coordinates");
         Assertions.assertTrue(main.equals(same), "Should be equals with Vector2d of the same coordinates");
     }
