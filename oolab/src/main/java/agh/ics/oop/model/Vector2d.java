@@ -40,6 +40,7 @@ public class Vector2d {
     public Vector2d upperRight(Vector2d other) {
         return new Vector2d(Math.max(this.getX(), other.getX()), Math.max(this.getY(), other.getY()));
     }
+
     public Vector2d lowerLeft(Vector2d other) {
         return new Vector2d(Math.min(this.getX(), other.getX()), Math.min(this.getY(), other.getY()));
     }
@@ -53,10 +54,13 @@ public class Vector2d {
             return true;
         if (!(other instanceof Vector2d that))
             return false;
-        return this.getX()==that.getX() && this.getY()==that.getY();
+        return this.getX() == that.getX() && this.getY() == that.getY();
     }
 
     public int hashCode() {
-        return this.toString().hashCode();
+        int hash = 17;
+        hash = hash * 31 + this.getX();
+        hash = hash * 31 + this.getY();
+        return hash;
     }
 }
