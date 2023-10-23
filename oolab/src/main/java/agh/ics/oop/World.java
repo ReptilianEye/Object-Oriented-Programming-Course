@@ -1,10 +1,12 @@
 package agh.ics.oop;
 
 
+import agh.ics.oop.model.Animal;
 import agh.ics.oop.model.MapDirection;
 import agh.ics.oop.model.MoveDirection;
 import agh.ics.oop.model.Vector2d;
 
+import java.util.List;
 import java.util.Map;
 
 public class World {
@@ -26,11 +28,14 @@ public class World {
         System.out.println(direction1);
         System.out.println(direction1.toUnitVector());
 
-
+        Animal zwierz = new Animal();
+        System.out.println(zwierz);
+        zwierz = new Animal(new Vector2d(5,23));
+        System.out.println(zwierz);
 
     }
 
-     static void run(MoveDirection[] args) {
+     static void run(List<MoveDirection> args) {
         for (var order : args) {
             switch (order) {
                 case FORWARD -> {
@@ -47,29 +52,5 @@ public class World {
                 }
             }
         }
-
-//System.out.println("Zwierzak idzie do przodu");
-//        String orders = Arrays.toString(args);
-//        System.out.println(orders.substring(1, orders.length() - 1));
-
-//        for (var order : args) {
-//            switch (order) {
-//                case  "f":
-//                    System.out.println("Zwierzak idzie do przodu");
-//                    break;
-//                case "d":
-//                    System.out.println("Zwierzak idzie do tyłu");
-//                    break;
-//                case "r":
-//                    System.out.println("Zwierzak skręca w prawo");
-//                    break;
-//                case "l":
-//                    System.out.println("Zwierzak skręca w lewo");
-//                    break;
-//                default: {
-//                    break;
-//                }
-//            }
-//        }
     }
 }

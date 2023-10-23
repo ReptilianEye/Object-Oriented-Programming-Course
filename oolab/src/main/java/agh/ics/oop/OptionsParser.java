@@ -2,36 +2,34 @@ package agh.ics.oop;
 
 import agh.ics.oop.model.MoveDirection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class OptionsParser {
-    public static MoveDirection[] parse(String[] args) {
-        MoveDirection[] Orders = new MoveDirection[args.length];
-        int n = 0;
+    public static List<MoveDirection> parse(String[] args) {
+        List<MoveDirection> Orders = new LinkedList<>();
         for (var order : args) {
             switch (order) {
                 case "f" -> {
-                    Orders[n] = MoveDirection.FORWARD;
-                    n++;
+                    Orders.add(MoveDirection.FORWARD);
                 }
                 case "d" -> {
-                    Orders[n] = MoveDirection.BACKWARD;
-                    n++;
+                    Orders.add(MoveDirection.BACKWARD);
                 }
                 case "r" -> {
-                    Orders[n] = MoveDirection.RIGHT;
-                    n++;
+                    Orders.add(MoveDirection.RIGHT);
                 }
                 case "l" -> {
-                    Orders[n] = MoveDirection.LEFT;
-                    n++;
+                    Orders.add(MoveDirection.LEFT);
                 }
                 default -> {
 //                    nothing to do
                 }
             }
         }
-        return Arrays.copyOfRange(Orders, 0, n);
+        return Orders;
 
     }
 }
