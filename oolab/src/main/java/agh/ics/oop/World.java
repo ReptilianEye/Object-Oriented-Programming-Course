@@ -30,7 +30,7 @@ public class World {
 
     }
 
-    static void run(MoveDirection[] args) {
+     static void run(MoveDirection[] args) {
         for (var order : args) {
             switch (order) {
                 case FORWARD -> {

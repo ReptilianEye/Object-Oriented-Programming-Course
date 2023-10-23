@@ -14,7 +14,7 @@ public class MapDirectionTest {
 
     @Test
     public void verifyPrevious() {
-        Assertions.assertEquals(MapDirection.NORTH, MapDirection.EAST.previous(),"Previous to EAST is NORTH");
+        Assertions.assertEquals(MapDirection.NORTH, MapDirection.EAST.previous(),"Previous to EAST is NORTHS");
         Assertions.assertEquals(MapDirection.EAST, MapDirection.SOUTH.previous(),"Previous to SOUTH is EAST");
         Assertions.assertEquals(MapDirection.SOUTH, MapDirection.WEST.previous(),"Previous to WEST is SOUTH");
         Assertions.assertEquals(MapDirection.WEST, MapDirection.NORTH.previous(),"Previous to NORTH is WEST");
