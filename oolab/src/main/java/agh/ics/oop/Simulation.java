@@ -7,12 +7,16 @@ import agh.ics.oop.model.Vector2d;
 import java.util.List;
 
 public class Simulation {
-    List<Animal> Animals;
-    List<MoveDirection> Orders;
+    private final List<Animal> Animals;
+    private final List<MoveDirection> Orders;
 
     public Simulation(List<MoveDirection> Orders, List<Vector2d> startingPositions) {
         this.Orders = Orders;
         this.Animals = startingPositions.stream().map(Animal::new).toList();
+    }
+
+    public List<Animal> getAnimals() {
+        return Animals;
     }
 
     private void printIthAnimal(int i) {
