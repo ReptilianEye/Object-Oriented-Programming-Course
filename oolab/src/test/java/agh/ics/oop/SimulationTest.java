@@ -22,10 +22,10 @@ class SimulationTest {
         List<Vector2d> startingPositions = List.of(new Vector2d(2, 2), new Vector2d(3, 4));
         Simulation simulation = new Simulation(Orders, startingPositions);
 
-        Vector2d expectedAnimal1P = new Vector2d(4, 3);
+        Vector2d expectedAnimal1P = new Vector2d(3, 0);
         MapDirection expectedAnimal1O = MapDirection.SOUTH;
 
-        Vector2d expectedAnimal2P = new Vector2d(0, 3);
+        Vector2d expectedAnimal2P = new Vector2d(2, 4);
         MapDirection expectedAnimal2O = MapDirection.NORTH;
 
         //when

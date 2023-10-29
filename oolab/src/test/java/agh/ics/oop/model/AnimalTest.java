@@ -18,7 +18,7 @@ class AnimalTest {
         Vector2d expectedP1 = new Vector2d(2, 2);
 
         MapDirection expectedO2 = MapDirection.NORTH;
-        Vector2d expectedP2 = new Vector2d(1, 2);
+        Vector2d expectedP2 = new Vector2d(2, 3);
 
         MapDirection expectedO3 = MapDirection.NORTH;
         Vector2d expectedP3 = new Vector2d(2, 2);
@@ -26,22 +26,22 @@ class AnimalTest {
         MapDirection expectedO4 = MapDirection.WEST;
         Vector2d expectedP4 = new Vector2d(2, 2);
 
-        Vector2d expectedP5 = new Vector2d(2, 1);
+        Vector2d expectedP5 = new Vector2d(1, 2);
 
 
         MapDirection expectedO6 = MapDirection.EAST;
-        Vector2d expectedP6 = new Vector2d(2, 1);
+        Vector2d expectedP6 = new Vector2d(1, 2);
 
         MapDirection expectedO7 = MapDirection.SOUTH;
 
         //bottom right test
         Animal testedBR = new Animal(new Vector2d(4, 4));
-        List<MoveDirection> orders1 = List.of(MoveDirection.RIGHT, MoveDirection.FORWARD, MoveDirection.RIGHT, MoveDirection.FORWARD);
+        List<MoveDirection> orders1 = List.of(MoveDirection.FORWARD, MoveDirection.RIGHT, MoveDirection.FORWARD);
         Vector2d expectedBR = new Vector2d(4, 4);
 
         //upper left test
         Animal testedUL = new Animal(new Vector2d(0, 0));
-        List<MoveDirection> orders2 = List.of(MoveDirection.FORWARD, MoveDirection.LEFT, MoveDirection.FORWARD);
+        List<MoveDirection> orders2 = List.of(MoveDirection.LEFT, MoveDirection.FORWARD, MoveDirection.LEFT, MoveDirection.FORWARD);
         Vector2d expectedUL = new Vector2d(0, 0);
 
         //when
