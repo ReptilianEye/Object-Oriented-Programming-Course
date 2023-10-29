@@ -15,7 +15,7 @@ public class OptionsParser {
                 case "f" -> {
                     Orders.add(MoveDirection.FORWARD);
                 }
-                case "d" -> {
+                case "b" -> {
                     Orders.add(MoveDirection.BACKWARD);
                 }
                 case "r" -> {

@@ -13,10 +13,10 @@ public class OptionsParserTest {
     @Test
     public void verifyParse() {
         //given
-        String[] orders1 = {"f", "l", "r", "d"};
+        String[] orders1 = {"f", "l", "r", "b"};
         String[] orders2 = {"f", "wrong", "l"};
         String[] orders3 = {};
-        String[] orders4 = {"f", "f", "r", "d", "wrong", "l"};
+        String[] orders4 = {"f", "f", "r", "b", "wrong", "l"};
         List<MoveDirection> expected1 = Arrays.asList(MoveDirection.FORWARD, MoveDirection.LEFT, MoveDirection.RIGHT, MoveDirection.BACKWARD);
         List<MoveDirection> expected2 = Arrays.asList(MoveDirection.FORWARD, MoveDirection.LEFT);
         List<MoveDirection> expected3 = List.of();

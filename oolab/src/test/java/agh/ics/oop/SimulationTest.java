@@ -22,11 +22,11 @@ class SimulationTest {
         List<Vector2d> startingPositions = List.of(new Vector2d(2, 2), new Vector2d(3, 4));
         Simulation simulation = new Simulation(Orders, startingPositions);
 
-        Vector2d expectedAnimal1P = new Vector2d(0, 1);
-        MapDirection expectedAnimal1O = MapDirection.NORTH;
+        Vector2d expectedAnimal1P = new Vector2d(4, 3);
+        MapDirection expectedAnimal1O = MapDirection.SOUTH;
 
-        Vector2d expectedAnimal2P = new Vector2d(4, 4);
-        MapDirection expectedAnimal2O = MapDirection.SOUTH;
+        Vector2d expectedAnimal2P = new Vector2d(0, 3);
+        MapDirection expectedAnimal2O = MapDirection.NORTH;
 
         //when
         simulation.run();

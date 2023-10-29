@@ -28,7 +28,7 @@ public class Animal {
     }
 
     public boolean isAt(Vector2d position) {
-        return this.position != null && this.position.equals(position);
+        return position != null && position.equals(position);
     }
 
     private boolean isLegal(Vector2d newPos) {
@@ -40,21 +40,18 @@ public class Animal {
     public void move(MoveDirection direction) {
         switch (direction) {
             case FORWARD -> {
-                Vector2d temp = this.position.add(this.orientation.toUnitVector());
+                Vector2d temp = position.add(orientation.toUnitVector());
                 if (isLegal(temp))
                     position = temp;
             }
             case BACKWARD -> {
-                Vector2d temp = this.position.subtract(this.orientation.toUnitVector());
+                Vector2d temp = position.subtract(orientation.toUnitVector());
                 if (isLegal(temp))
                     position = temp;
             }
-            case LEFT -> {
-                orientation = this.orientation.previous();
-            }
-            case RIGHT -> {
-                orientation = this.orientation.next();
-            }
+            case LEFT -> orientation = orientation.previous();
+            case RIGHT -> orientation = orientation.next();
+
         }
     }
 
