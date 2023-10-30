@@ -11,11 +11,11 @@ public class Vector2d {
         this.y = y;
     }
 
-    int getX() {
+    public int getX() {
         return this.x;
     }
 
-    int getY() {
+    public int getY() {
         return this.y;
     }
 
@@ -49,6 +49,10 @@ public class Vector2d {
 
     public Vector2d opposite() {
         return new Vector2d(-this.getX(), -this.getY());
+    }
+
+    public boolean isLegal(Vector2d bottomLeftBound, Vector2d upperRightBound) {
+        return follows(bottomLeftBound) &&precedes(upperRightBound);
     }
 
     public boolean equals(Object other) {

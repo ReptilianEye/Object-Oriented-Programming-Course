@@ -3,16 +3,19 @@ package agh.ics.oop;
 import agh.ics.oop.model.Animal;
 import agh.ics.oop.model.MoveDirection;
 import agh.ics.oop.model.Vector2d;
+import agh.ics.oop.model.WorldMap;
 
 import java.util.List;
 
 public class Simulation {
     private final List<Animal> Animals;
     private final List<MoveDirection> Orders;
+    private final WorldMap Map;
 
-    public Simulation(List<MoveDirection> Orders, List<Vector2d> startingPositions) {
+    public Simulation(List<MoveDirection> Orders, List<Vector2d> startingPositions, WorldMap Map) {
         this.Orders = Orders;
         this.Animals = startingPositions.stream().map(Animal::new).toList();
+        this.Map = Map;
     }
 
     public List<Animal> getAnimals() {
@@ -27,8 +30,7 @@ public class Simulation {
         int animal_idx = 0;
         for (var ord : Orders) {
             Animal current = Animals.get(animal_idx);
-            current.move(ord);
-//            Animals.set(animal_idx, current);
+            Map.move(current, ord);
             printIthAnimal(animal_idx);
             animal_idx = (animal_idx + 1) % Animals.size();
         }

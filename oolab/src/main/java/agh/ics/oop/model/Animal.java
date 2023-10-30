@@ -22,31 +22,36 @@ public class Animal {
         return position;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Pozycja: " + position.toString() + ", orientacja: " + orientation.toString();
+//    }
+
+
     @Override
     public String toString() {
-        return "Pozycja: " + position.toString() + ", orientacja: " + orientation.toString();
+        return switch (orientation) {
+            case NORTH -> "N";
+            case EAST -> "E";
+            case SOUTH -> "S";
+            case WEST -> "W";
+        };
     }
 
     public boolean isAt(Vector2d position) {
-        return position != null && position.equals(position);
+        return this.position.equals(position);
     }
 
-    private boolean isLegal(Vector2d newPos) {
-        Vector2d lowerBound = new Vector2d(0, 0);
-        Vector2d upperBound = new Vector2d(4, 4);
-        return newPos.follows(lowerBound) && newPos.precedes(upperBound);
-    }
-
-    public void move(MoveDirection direction) {
+    public void move(MoveDirection direction, MoveValidator validator) {
         switch (direction) {
             case FORWARD -> {
                 Vector2d temp = position.add(orientation.toUnitVector());
-                if (isLegal(temp))
+                if (validator.canMoveTo(temp))
                     position = temp;
             }
             case BACKWARD -> {
                 Vector2d temp = position.subtract(orientation.toUnitVector());
-                if (isLegal(temp))
+                if (validator.canMoveTo(temp))
                     position = temp;
             }
             case LEFT -> orientation = orientation.previous();
