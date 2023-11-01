@@ -13,6 +13,7 @@ class AnimalTest {
     void move() {
         //given
         //moves test
+        MoveValidator validator = new RectangularMap(4, 4);
         Animal tested1 = new Animal();
         MapDirection expectedO1 = MapDirection.NORTH;
         Vector2d expectedP1 = new Vector2d(2, 2);
@@ -48,37 +49,37 @@ class AnimalTest {
         MapDirection actualO1 = tested1.getOrientation();
         Vector2d actualP1 = tested1.getPosition();
 
-        tested1.move(MoveDirection.FORWARD);
+        tested1.move(MoveDirection.FORWARD,validator);
         MapDirection actualO2 = tested1.getOrientation();
         Vector2d actualP2 = tested1.getPosition();
 
-        tested1.move(MoveDirection.BACKWARD);
+        tested1.move(MoveDirection.BACKWARD,validator);
         MapDirection actualO3 = tested1.getOrientation();
         Vector2d actualP3 = tested1.getPosition();
 
-        tested1.move(MoveDirection.LEFT);
+        tested1.move(MoveDirection.LEFT,validator);
         MapDirection actualO4 = tested1.getOrientation();
         Vector2d actualP4 = tested1.getPosition();
 
-        tested1.move(MoveDirection.FORWARD);
+        tested1.move(MoveDirection.FORWARD,validator);
         Vector2d actualP5 = tested1.getPosition();
 
-        tested1.move(MoveDirection.RIGHT);
-        tested1.move(MoveDirection.RIGHT);
+        tested1.move(MoveDirection.RIGHT,validator);
+        tested1.move(MoveDirection.RIGHT,validator);
         MapDirection actualO6 = tested1.getOrientation();
         Vector2d actualP6 = tested1.getPosition();
 
-        tested1.move(MoveDirection.RIGHT);
+        tested1.move(MoveDirection.RIGHT,validator);
         MapDirection actualO7 = tested1.getOrientation();
 
 
         for (var ord : orders1) {
-            testedBR.move(ord);
+            testedBR.move(ord,validator);
         }
         Vector2d actualBR = testedBR.getPosition();
 
         for (var ord : orders2) {
-            testedUL.move(ord);
+            testedUL.move(ord,validator);
         }
         Vector2d actualUL = testedUL.getPosition();
 

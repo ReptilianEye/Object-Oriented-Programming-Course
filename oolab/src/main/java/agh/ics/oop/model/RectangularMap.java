@@ -8,7 +8,7 @@ public class RectangularMap implements WorldMap {
 
     private final Vector2d lowerLeftBound, upperRightBound;
 
-    RectangularMap(int width, int height) {
+    public RectangularMap(int width, int height) {
         this.lowerLeftBound = new Vector2d(0, 0);
         this.upperRightBound = new Vector2d(width, height);
     }
@@ -28,14 +28,19 @@ public class RectangularMap implements WorldMap {
 
     @Override
     public void move(Animal animal, MoveDirection direction) {
-        Vector2d position = (Vector2d) animals.entrySet().stream().filter(entry -> animal.equals(entry.getValue())).reduce((first, rest) -> first).orElse(null);
+        Vector2d position = animals.entrySet().stream()
+                .filter(entry -> animal.equals(entry.getValue()))
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+
         if (position != null && position.isLegal(lowerLeftBound, upperRightBound))
             animal.move(direction, this);
     }
 
     @Override
     public boolean isOccupied(Vector2d position) {
-        return animals.containsKey(position);
+        return objectAt(position) != null;
     }
 
     @Override

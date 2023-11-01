@@ -18,6 +18,14 @@ public class Simulation {
         this.Map = Map;
     }
 
+    /*
+     ** Place animals on the map
+     ** @return number of placed animals
+     */
+    public int placeAnimals() {
+        return (int) getAnimals().stream().filter(Map::place).count();
+    }
+
     public List<Animal> getAnimals() {
         return Animals;
     }
@@ -31,7 +39,7 @@ public class Simulation {
         for (var ord : Orders) {
             Animal current = Animals.get(animal_idx);
             Map.move(current, ord);
-            printIthAnimal(animal_idx);
+//            printIthAnimal(animal_idx);
             animal_idx = (animal_idx + 1) % Animals.size();
         }
     }
