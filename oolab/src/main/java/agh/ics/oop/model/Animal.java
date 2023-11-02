@@ -42,7 +42,7 @@ public class Animal {
         return this.position.equals(position);
     }
 
-    public void move(MoveDirection direction, MoveValidator validator) {
+    public Vector2d move(MoveDirection direction, MoveValidator validator) {
         switch (direction) {
             case FORWARD -> {
                 Vector2d temp = position.add(orientation.toUnitVector());
@@ -58,6 +58,7 @@ public class Animal {
             case RIGHT -> orientation = orientation.next();
 
         }
+        return position;
     }
 
 }

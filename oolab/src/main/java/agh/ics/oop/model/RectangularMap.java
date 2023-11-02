@@ -28,14 +28,11 @@ public class RectangularMap implements WorldMap {
 
     @Override
     public void move(Animal animal, MoveDirection direction) {
-        Vector2d position = animals.entrySet().stream()
-                .filter(entry -> animal.equals(entry.getValue()))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
-
-        if (position != null && position.isLegal(lowerLeftBound, upperRightBound))
-            animal.move(direction, this);
+        Vector2d prevPos = animal.getPosition();
+        if (!prevPos.equals(animal.move(direction, this))) {
+            animals.remove(prevPos);
+            place(animal);
+        }
     }
 
     @Override
