@@ -3,7 +3,7 @@ package agh.ics.oop.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RectangularMap implements WorldMap {
+public class RectangularMap implements WorldMap<Vector2d, Animal> {
     private final Map<Vector2d, Animal> animals = new HashMap<>();
 
     private final Vector2d lowerLeftBound, upperRightBound;

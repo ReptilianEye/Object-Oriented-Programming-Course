@@ -10,7 +10,7 @@ import java.util.List;
 public class Simulation {
     private final List<Animal> Animals;
     private final List<MoveDirection> Orders;
-    private final WorldMap Map;
+    private final WorldMap<Vector2d,Animal> Map;
 
     public Simulation(List<MoveDirection> Orders, List<Vector2d> startingPositions, WorldMap Map) {
         this.Orders = Orders;
