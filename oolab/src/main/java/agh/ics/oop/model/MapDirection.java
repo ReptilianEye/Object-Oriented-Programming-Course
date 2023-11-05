@@ -15,6 +15,24 @@ public enum MapDirection {
         };
     }
 
+    public String toStringShort() {
+        return switch (this) {
+            case NORTH -> "N";
+            case EAST -> "E";
+            case SOUTH -> "S";
+            case WEST -> "W";
+        };
+    }
+
+    public String toStringArrows() {
+        return switch (this) {
+            case NORTH -> "^";
+            case EAST -> ">";
+            case SOUTH -> "v";
+            case WEST -> "<";
+        };
+    }
+
     public MapDirection next() {
         return VALUES[(this.ordinal() + 1) % VALUES.length];
     }

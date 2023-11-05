@@ -30,12 +30,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return switch (orientation) {
-            case NORTH -> "N";
-            case EAST -> "E";
-            case SOUTH -> "S";
-            case WEST -> "W";
-        };
+        return orientation.toStringShort();
     }
 
     public boolean isAt(Vector2d position) {

@@ -3,7 +3,6 @@ package agh.ics.oop.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.AbstractMap;
 import java.util.List;
 
 
@@ -16,12 +15,11 @@ class TextMapTest {
 //        System.out.println(map);
         for (var el : elements) {
             map.place(el);
-//            System.out.println(map);
         }
         var mapAfter = map.getMap();
         for (int i = 0; i < elements.size(); i++) {
-            Assertions.assertEquals(mapAfter.get(i).getKey(), elements.get(i));
-            Assertions.assertEquals(mapAfter.get(i).getValue(), MapDirection.EAST);
+            Assertions.assertEquals(mapAfter.get(i).text(), elements.get(i));
+            Assertions.assertEquals(mapAfter.get(i).direction(), MapDirection.EAST);
         }
     }
 
@@ -36,7 +34,7 @@ class TextMapTest {
         for (var el : elements) {
             map.place(el);
         }
-        List<AbstractMap.SimpleEntry> expected = List.of(new AbstractMap.SimpleEntry(s1, MapDirection.WEST), new AbstractMap.SimpleEntry(s3, MapDirection.EAST), new AbstractMap.SimpleEntry(s2, MapDirection.EAST));
+        List<TextMapElement> expected = List.of(new TextMapElement(s1, MapDirection.WEST), new TextMapElement(s3, MapDirection.EAST), new TextMapElement(s2, MapDirection.EAST));
         map.move(s1, MoveDirection.BACKWARD);
         map.move(s2, MoveDirection.FORWARD);
         map.move(s2, MoveDirection.FORWARD);
@@ -87,5 +85,16 @@ class TextMapTest {
     @Test
     void canMoveTo() {
         isOccupied();
+    }
+
+
+    @Test
+    void testToString() {
+        TextMap map = new TextMap();
+        List<String> elements = List.of("Ala", "ma", "Kota");
+        for (var el : elements) {
+            map.place(el);
+            System.out.println(map);
+        }
     }
 }
