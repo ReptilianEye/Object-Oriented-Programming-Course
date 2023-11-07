@@ -4,7 +4,7 @@ package agh.ics.oop.model;
 public enum MapDirection {
 
     NORTH, EAST, SOUTH, WEST;
-    private static final MapDirection[] vals = values();
+    private static final MapDirection[] VALUES = values();
 
     public String toString() {
         return switch (this) {
@@ -15,13 +15,31 @@ public enum MapDirection {
         };
     }
 
+    public String toStringShort() {
+        return switch (this) {
+            case NORTH -> "N";
+            case EAST -> "E";
+            case SOUTH -> "S";
+            case WEST -> "W";
+        };
+    }
+
+    public String toStringArrows() {
+        return switch (this) {
+            case NORTH -> "^";
+            case EAST -> ">";
+            case SOUTH -> "v";
+            case WEST -> "<";
+        };
+    }
+
     public MapDirection next() {
-        return vals[(this.ordinal() + 1) % vals.length];
+        return VALUES[(this.ordinal() + 1) % VALUES.length];
     }
 
     public MapDirection previous() {
-        int i = this.ordinal() == 0 ? vals.length - 1 : this.ordinal() - 1;
-        return vals[i];
+        int i = this.ordinal() == 0 ? VALUES.length - 1 : this.ordinal() - 1;
+        return VALUES[i];
     }
 
     public Vector2d toUnitVector() {
