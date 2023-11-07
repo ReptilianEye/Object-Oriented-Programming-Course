@@ -4,6 +4,9 @@ package agh.ics.oop;
 import agh.ics.oop.model.*;
 
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class World {
     public static void main(String[] args) {
@@ -16,11 +19,13 @@ public class World {
 
         List<MoveDirection> directions = OptionsParser.parse(args);
         List<Vector2d> positions = List.of(new Vector2d(2, 2), new Vector2d(3, 4));
-        WorldMap map = new RectangularMap(5,5);
-        Simulation simulation = new Simulation(directions, positions,map);
+        WorldMap map = new RectangularMap(5, 5);
+        Simulation simulation = new Simulation(directions, positions, map);
         simulation.run();
 
         System.out.println("System zakończył działanie");
+
+
     }
 
     static void run(List<MoveDirection> args) {
