@@ -6,9 +6,6 @@ import java.util.Map;
 abstract class AbstractWorldMap {
     Map<Vector2d, WorldElement> animals = new HashMap<>();
 
-    protected WorldElement objectAt(Vector2d position) {
-        return animals.get(position);
-    }
     public boolean place(WorldElement animal) {
         if (canMoveTo(animal.getPosition())) {
             animals.put(animal.getPosition(), animal);
@@ -16,7 +13,9 @@ abstract class AbstractWorldMap {
         }
         return false;
     }
-
+protected WorldElement objectAt(Vector2d position) {
+        return animals.get(position);
+    }
     public boolean isOccupied(Vector2d position) {
         return objectAt(position) != null;
     }
