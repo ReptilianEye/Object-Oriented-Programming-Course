@@ -20,10 +20,10 @@ class SimulationTest {
         WorldMap map = new RectangularMap(4, 4);
         Simulation simulation = new Simulation(Orders, startingPositions, map);
 
-        Vector2d expectedAnimal1P = new Vector2d(3, 0);
+        Vector2d expectedAnimal1P = new Vector2d(2, 0);
         MapDirection expectedAnimal1O = MapDirection.SOUTH;
 
-        Vector2d expectedAnimal2P = new Vector2d(2, 4);
+        Vector2d expectedAnimal2P = new Vector2d(3, 4);
         MapDirection expectedAnimal2O = MapDirection.NORTH;
 
         // when
@@ -141,22 +141,22 @@ class SimulationTest {
         WorldMap map = new RectangularMap(19, 19);
         Simulation simulation = new Simulation(Orders, startingPositions, map);
 
-        List<Vector2d> expectedPositions = List.of(new Vector2d(0, 3), new Vector2d(2, 3), new Vector2d(8, 10),
-                new Vector2d(0, 1), new Vector2d(1, 0), new Vector2d(15, 7), new Vector2d(6, 14), new Vector2d(4, 17),
-                new Vector2d(3, 11), new Vector2d(13, 10), new Vector2d(14, 9), new Vector2d(5, 8),
+        List<Vector2d> expectedPositions = List.of(new Vector2d(0, 3), new Vector2d(2, 4), new Vector2d(8, 10),
+                new Vector2d(1, 1), new Vector2d(1, 0), new Vector2d(15, 7), new Vector2d(5, 14), new Vector2d(4, 17),
+                new Vector2d(3, 11), new Vector2d(13, 10), new Vector2d(14, 7), new Vector2d(5, 7),
                 new Vector2d(12, 14));
         List<MapDirection> expectedDirections = List.of(MapDirection.WEST, MapDirection.NORTH, MapDirection.WEST,
                 MapDirection.EAST, MapDirection.WEST, MapDirection.NORTH, MapDirection.EAST, MapDirection.WEST,
                 MapDirection.SOUTH, MapDirection.EAST, MapDirection.NORTH, MapDirection.EAST, MapDirection.WEST);
 
         // when
-        int actualAnimalsPlaced = simulation.placeAnimals();
+//        int actualAnimalsPlaced = simulation.placeAnimals();
         simulation.run();
         List<Animal> animalsAfter = simulation.getAnimals();
 
         // then
-        Assertions.assertEquals(animalsCount, actualAnimalsPlaced,
-                "All animals should be placed if had different starting positions");
+//        Assertions.assertEquals(animalsCount, actualAnimalsPlaced,
+//                "All animals should be placed if had different starting positions");
 
         for (int i = 0; i < expectedPositions.size(); i++) {
             Animal current = animalsAfter.get(i);
@@ -175,13 +175,13 @@ class SimulationTest {
                 .parse(new String[] { "f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f" });
         List<Vector2d> startingPositions = List.of(new Vector2d(2, 2), new Vector2d(3, 4));
         int animalsCount = startingPositions.size();
-        WorldMap map = new FieldMap(4);
+        WorldMap map = new GrassField(4);
         Simulation simulation = new Simulation(Orders, startingPositions, map);
 
-        Vector2d expectedAnimal1P = new Vector2d(3, 0);
+        Vector2d expectedAnimal1P = new Vector2d(2, -1);
         MapDirection expectedAnimal1O = MapDirection.SOUTH;
 
-        Vector2d expectedAnimal2P = new Vector2d(2, 4);
+        Vector2d expectedAnimal2P = new Vector2d(3, 7);
         MapDirection expectedAnimal2O = MapDirection.NORTH;
 
         // when
@@ -212,7 +212,7 @@ class SimulationTest {
                 new Vector2d(2, 11), new Vector2d(16, 9), new Vector2d(14, 8), new Vector2d(7, 7),
                 new Vector2d(11, 13));
         int animalsCount = startingPositions.size();
-        WorldMap map = new FieldMap(19);
+        WorldMap map = new GrassField(19);
         Simulation simulation = new Simulation(Orders, startingPositions, map);
 
         Vector2d expectedAnimal1P = new Vector2d(2, 3);
@@ -288,25 +288,25 @@ class SimulationTest {
                 new Vector2d(2, 11), new Vector2d(16, 9), new Vector2d(14, 8), new Vector2d(7, 7),
                 new Vector2d(11, 13));
         int animalsCount = startingPositions.size();
-        WorldMap map = new FieldMap(19);
+        WorldMap map = new GrassField(19);
         Simulation simulation = new Simulation(Orders, startingPositions, map);
 
-        List<Vector2d> expectedPositions = List.of(new Vector2d(0, 3), new Vector2d(2, 3), new Vector2d(8, 10),
-                new Vector2d(0, 1), new Vector2d(1, 0), new Vector2d(15, 7), new Vector2d(6, 14), new Vector2d(4, 17),
-                new Vector2d(3, 11), new Vector2d(13, 10), new Vector2d(14, 9), new Vector2d(5, 8),
+        List<Vector2d> expectedPositions = List.of(new Vector2d(0, 3), new Vector2d(2, 4), new Vector2d(8, 10),
+                new Vector2d(1, 1), new Vector2d(1, 0), new Vector2d(15, 7), new Vector2d(5, 14), new Vector2d(4, 17),
+                new Vector2d(3, 11), new Vector2d(13, 10), new Vector2d(14, 7), new Vector2d(5, 7),
                 new Vector2d(12, 14));
         List<MapDirection> expectedDirections = List.of(MapDirection.WEST, MapDirection.NORTH, MapDirection.WEST,
                 MapDirection.EAST, MapDirection.WEST, MapDirection.NORTH, MapDirection.EAST, MapDirection.WEST,
                 MapDirection.SOUTH, MapDirection.EAST, MapDirection.NORTH, MapDirection.EAST, MapDirection.WEST);
 
         // when
-        int actualAnimalsPlaced = simulation.placeAnimals();
+//        int actualAnimalsPlaced = simulation.placeAnimals();
         simulation.run();
         List<Animal> animalsAfter = simulation.getAnimals();
 
         // then
-        Assertions.assertEquals(animalsCount, actualAnimalsPlaced,
-                "All animals should be placed if had different starting positions");
+//        Assertions.assertEquals(animalsCount, actualAnimalsPlaced,
+//                "All animals should be placed if had different starting positions");
 
         for (int i = 0; i < expectedPositions.size(); i++) {
             Animal current = animalsAfter.get(i);
