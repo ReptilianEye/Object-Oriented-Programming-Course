@@ -43,6 +43,11 @@ public class GrassField extends AbstractWorldMap implements WorldMap<Vector2d, W
         return !isOccupied(position);
     }
 
+    @Override
+    public Collection getElements() {
+        return List.of(animals, grasses);
+    }
+
     private Vector2d lowerLeftBound() {
         Vector2d leftBound = grasses.keySet().stream().reduce(new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE), Vector2d::lowerLeft);
         leftBound = animals.keySet().stream().reduce(leftBound, Vector2d::lowerLeft);

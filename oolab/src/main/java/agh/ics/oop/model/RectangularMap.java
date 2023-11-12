@@ -1,5 +1,8 @@
 package agh.ics.oop.model;
 
+import java.util.Collection;
+import java.util.List;
+
 public class RectangularMap extends AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
 
     private final Vector2d lowerLeftBound, upperRightBound;
@@ -27,6 +30,11 @@ public class RectangularMap extends AbstractWorldMap implements WorldMap<Vector2
     @Override
     public boolean canMoveTo(Vector2d position) {
         return !isOccupied(position) && isLegal(position);
+    }
+
+    @Override
+    public Collection getElements() {
+        return List.of(animals);
     }
 
     @Override
