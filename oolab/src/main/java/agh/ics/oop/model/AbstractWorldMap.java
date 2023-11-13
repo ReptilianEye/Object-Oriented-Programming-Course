@@ -3,7 +3,7 @@ package agh.ics.oop.model;
 import java.util.HashMap;
 import java.util.Map;
 
-abstract class AbstractWorldMap {
+abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
     protected Map<Vector2d, WorldElement> animals = new HashMap<>();
 
     public boolean place(WorldElement animal) {
@@ -14,7 +14,7 @@ abstract class AbstractWorldMap {
         return false;
     }
 
-    protected WorldElement objectAt(Vector2d position) {
+    public WorldElement objectAt(Vector2d position) {
         return animals.get(position);
     }
 
@@ -22,13 +22,14 @@ abstract class AbstractWorldMap {
         return objectAt(position) != null;
     }
 
-    protected boolean canMoveTo(Vector2d position) {
+    public boolean canMoveTo(Vector2d position) {
         return !isOccupied(position);
     }
 
-    public void move(Animal animal, MoveDirection direction, MoveValidator validator) {
+    public void move(WorldElement element, MoveDirection direction) {
+        Animal animal = (Animal) element;
         Vector2d prevPos = animal.getPosition();
-        if (!prevPos.equals(animal.move(direction, validator))) {
+        if (!prevPos.equals(animal.move(direction, this))) {
             animals.remove(prevPos);
             place(animal);
         }

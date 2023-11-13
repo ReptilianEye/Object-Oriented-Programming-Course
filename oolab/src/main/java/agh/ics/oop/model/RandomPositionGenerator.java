@@ -12,7 +12,7 @@ public class RandomPositionGenerator implements Iterable<Vector2d> {
     List<Vector2d> list;
 
     @Override
-    public Iterator iterator() {
+    public Iterator<Vector2d> iterator() {
         return new CustomIterator();
     }
 

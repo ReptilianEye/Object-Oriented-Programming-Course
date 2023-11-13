@@ -2,7 +2,7 @@ package agh.ics.oop.model;
 
 import java.util.*;
 
-public class GrassField extends AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
+public class GrassField extends AbstractWorldMap{
 
     private final Map<Vector2d, WorldElement> grasses;
 
@@ -21,12 +21,6 @@ public class GrassField extends AbstractWorldMap implements WorldMap<Vector2d, W
         return placed_grasses;
     }
 
-    @Override
-    public void move(WorldElement object, MoveDirection direction) {
-        Animal animal = (Animal) object;
-        super.move(animal, direction, this);
-    }
-
     public boolean isOccupied(Vector2d position) {
         WorldElement object = objectAt(position);
         return object instanceof Animal;
@@ -36,11 +30,6 @@ public class GrassField extends AbstractWorldMap implements WorldMap<Vector2d, W
     public WorldElement objectAt(Vector2d position) {
         WorldElement animal = super.objectAt(position);
         return animal != null ? animal : grasses.get(position);
-    }
-
-    @Override
-    public boolean canMoveTo(Vector2d position) {
-        return !isOccupied(position);
     }
 
     @Override
@@ -58,10 +47,5 @@ public class GrassField extends AbstractWorldMap implements WorldMap<Vector2d, W
         Vector2d rightBound = grasses.keySet().stream().reduce(new Vector2d(0, 0), Vector2d::upperRight);
         rightBound = animals.keySet().stream().reduce(rightBound, Vector2d::upperRight);
         return rightBound;
-    }
-
-    @Override
-    public String toString() {
-        return new MapVisualizer(this).draw(lowerLeftBound(), upperRightBound());
     }
 }

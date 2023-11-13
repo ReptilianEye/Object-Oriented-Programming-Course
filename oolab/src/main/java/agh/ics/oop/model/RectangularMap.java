@@ -3,7 +3,7 @@ package agh.ics.oop.model;
 import java.util.Collection;
 import java.util.List;
 
-public class RectangularMap extends AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
+public class RectangularMap extends AbstractWorldMap {
 
     private final Vector2d lowerLeftBound, upperRightBound;
 
@@ -17,17 +17,6 @@ public class RectangularMap extends AbstractWorldMap implements WorldMap<Vector2
     }
 
     @Override
-    public void move(WorldElement object, MoveDirection direction) {
-        Animal animal = (Animal) object;
-        super.move(animal, direction, this);
-    }
-
-    @Override
-    public Animal objectAt(Vector2d position) {
-        return (Animal) super.objectAt(position);
-    }
-
-    @Override
     public boolean canMoveTo(Vector2d position) {
         return !isOccupied(position) && isLegal(position);
     }
@@ -35,10 +24,5 @@ public class RectangularMap extends AbstractWorldMap implements WorldMap<Vector2
     @Override
     public Collection getElements() {
         return List.of(animals);
-    }
-
-    @Override
-    public String toString() {
-        return new MapVisualizer(this).draw(lowerLeftBound, upperRightBound);
     }
 }
