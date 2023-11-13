@@ -22,6 +22,11 @@ public class RectangularMap extends AbstractWorldMap {
     }
 
     @Override
+    protected Boundary getCurrentBounds() {
+        return new Boundary(lowerLeftBound,upperRightBound);
+    }
+
+    @Override
     public Collection getElements() {
         return List.of(animals);
     }

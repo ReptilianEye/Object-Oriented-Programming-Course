@@ -1,16 +1,13 @@
 package agh.ics.oop;
 
-import agh.ics.oop.model.Animal;
-import agh.ics.oop.model.MoveDirection;
-import agh.ics.oop.model.Vector2d;
-import agh.ics.oop.model.WorldMap;
+import agh.ics.oop.model.*;
 
 import java.util.List;
 
 public class Simulation {
     private final List<Animal> Animals;
     private final List<MoveDirection> Orders;
-    private final WorldMap<Vector2d,Animal> Map;
+    private final WorldMap<Vector2d, Animal> Map;
 
     public Simulation(List<MoveDirection> Orders, List<Vector2d> startingPositions, WorldMap Map) {
         this.Orders = Orders;
@@ -24,7 +21,18 @@ public class Simulation {
      ** @return number of placed animals
      */
     public int placeAnimals() {
-        return (int) getAnimals().stream().filter(Map::place).count();
+        int placed = 0;
+        List<Animal> startingPosition = getAnimals();
+        for (var st : startingPosition) {
+            try {
+                placed++;
+                Map.place(st);
+            } catch (
+                    PositionAlreadyOccupiedException ignored) {
+                placed--;
+            }
+        }
+        return placed;
     }
 
     public List<Animal> getAnimals() {

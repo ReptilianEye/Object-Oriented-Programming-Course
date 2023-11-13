@@ -24,7 +24,12 @@ class GrassFieldTest {
         assertFalse(map.isOccupied(new Vector2d(9, 9)));
 
         Animal animal = new Animal(new Vector2d(2, 2));
-        map.place(animal);
+        try {
+            map.place(animal);
+        } catch (
+                PositionAlreadyOccupiedException e) {
+
+        }
 
         assertTrue(map.isOccupied(new Vector2d(2, 2)));
         assertFalse(map.isOccupied(new Vector2d(1, 5)));
@@ -40,20 +45,22 @@ class GrassFieldTest {
     @Test
     void testObjectAt() {
         GrassField map = new GrassField(10);
-        Iterator it =  map.getElements().iterator();
+        Iterator it = map.getElements().iterator();
         it.next();
         HashMap grasses = (HashMap) it.next();
-        for (var grass :grasses.values())
-        {
+        for (var grass : grasses.values()) {
             Assertions.assertTrue(grass instanceof Grass);
         }
         Animal animal = new Animal(new Vector2d(2, 2));
-        map.place(animal);
-
+        try {
+            map.place(animal);
+        } catch (
+                PositionAlreadyOccupiedException ignored) {
+        }
         assertEquals(animal, map.objectAt(new Vector2d(2, 2)));
         assertFalse(map.objectAt(new Vector2d(3, 4)) instanceof Animal);
         assertFalse(map.objectAt(new Vector2d(0, 0)) instanceof Animal);
-        assertFalse(map.objectAt(new Vector2d(9, 9))instanceof Animal);
+        assertFalse(map.objectAt(new Vector2d(9, 9)) instanceof Animal);
     }
 
     @Test
@@ -70,10 +77,15 @@ class GrassFieldTest {
         assertTrue(map.canMoveTo(new Vector2d(9, 9)));
 
         Animal animal = new Animal(new Vector2d(2, 2));
-        map.place(animal);
+        try {
+            map.place(animal);
+        } catch (
+                PositionAlreadyOccupiedException ignored) {
+        }
 
         assertFalse(map.canMoveTo(new Vector2d(2, 2)));
         assertTrue(map.canMoveTo(new Vector2d(3, 4)));
         assertTrue(map.canMoveTo(new Vector2d(0, 0)));
         assertTrue(map.canMoveTo(new Vector2d(9, 9)));
-    }}
+    }
+}

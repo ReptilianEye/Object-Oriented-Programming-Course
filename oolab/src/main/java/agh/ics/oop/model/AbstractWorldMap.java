@@ -6,12 +6,12 @@ import java.util.Map;
 abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
     protected Map<Vector2d, WorldElement> animals = new HashMap<>();
 
-    public boolean place(WorldElement animal) {
-        if (canMoveTo(animal.getPosition())) {
-            animals.put(animal.getPosition(), animal);
-            return true;
+    public void place(WorldElement animal) throws PositionAlreadyOccupiedException {
+        Vector2d newPosition = animal.getPosition();
+        if (!canMoveTo(newPosition)) {
+            throw new PositionAlreadyOccupiedException(newPosition);
         }
-        return false;
+        animals.put(newPosition, animal);
     }
 
     public WorldElement objectAt(Vector2d position) {
@@ -25,13 +25,24 @@ abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
     public boolean canMoveTo(Vector2d position) {
         return !isOccupied(position);
     }
+    protected abstract Boundary getCurrentBounds();
 
     public void move(WorldElement element, MoveDirection direction) {
         Animal animal = (Animal) element;
         Vector2d prevPos = animal.getPosition();
         if (!prevPos.equals(animal.move(direction, this))) {
             animals.remove(prevPos);
-            place(animal);
+            try {
+                place(animal);
+            } catch (
+                    PositionAlreadyOccupiedException ignored) {
+            }
         }
+    }
+
+    @Override
+    public String toString() {
+        Boundary boundary = this.getCurrentBounds();
+        return new MapVisualizer(this).draw(boundary.leftCorner(), boundary.rightCorner());
     }
 }

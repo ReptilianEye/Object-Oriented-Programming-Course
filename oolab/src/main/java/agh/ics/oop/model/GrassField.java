@@ -32,7 +32,6 @@ public class GrassField extends AbstractWorldMap{
         return animal != null ? animal : grasses.get(position);
     }
 
-    @Override
     public Collection getElements() {
         return List.of(animals, grasses);
     }
@@ -48,4 +47,9 @@ public class GrassField extends AbstractWorldMap{
         rightBound = animals.keySet().stream().reduce(rightBound, Vector2d::upperRight);
         return rightBound;
     }
+    @Override
+    protected Boundary getCurrentBounds() {
+        return new Boundary(lowerLeftBound(),upperRightBound());
+    }
+
 }

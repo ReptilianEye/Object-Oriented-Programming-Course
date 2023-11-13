@@ -15,11 +15,10 @@ public class TextMap implements WorldMap<Integer, String> {
     private int N = 0;
 
     @Override
-    public boolean place(String text) {
+    public void place(String text) {
         map.add(new TextMapElement(text, MapDirection.EAST));
         positions.put(text, N);
         N++;
-        return true;
     }
 
     public void swapPositions(int i, int j) {
@@ -29,7 +28,7 @@ public class TextMap implements WorldMap<Integer, String> {
         // update hashmap
         positions.put(b.text(), i);
         positions.put(a.text(), j);
-        // opdate map
+        // update map
         map.set(i, b);
         map.set(j, a);
     }
