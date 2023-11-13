@@ -16,6 +16,7 @@ public class Simulation {
         this.Orders = Orders;
         this.Animals = startingPositions.stream().map(Animal::new).toList();
         this.Map = Map;
+        placeAnimals();
     }
 
     /*

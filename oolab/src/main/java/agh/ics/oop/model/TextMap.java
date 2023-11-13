@@ -1,6 +1,7 @@
 package agh.ics.oop.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,6 +79,11 @@ public class TextMap implements WorldMap<Integer, String> {
     @Override
     public boolean canMoveTo(Integer position) {
         return isOccupied(position);
+    }
+
+    @Override
+    public Collection getElements() {
+        return map;
     }
 
     @Override
