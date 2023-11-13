@@ -10,19 +10,14 @@ import java.util.stream.Collectors;
 
 public class World {
     public static void main(String[] args) {
-        Animal zwierz = new Animal();
-        System.out.println(zwierz);
-        zwierz = new Animal(new Vector2d(5, 23));
-        System.out.println(zwierz);
-
         System.out.println("System wystartował");
 
         List<MoveDirection> directions = OptionsParser.parse(args);
         List<Vector2d> positions = List.of(new Vector2d(2, 2), new Vector2d(3, 4));
-        WorldMap map = new RectangularMap(5, 5);
+        WorldMap map = new GrassField(10);
         Simulation simulation = new Simulation(directions, positions, map);
         simulation.run();
-
+        System.out.println(map);
         System.out.println("System zakończył działanie");
 
 

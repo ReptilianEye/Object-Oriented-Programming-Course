@@ -20,9 +20,6 @@ public class RandomPositionGenerator implements Iterable<Vector2d> {
         int maxWidth = (int) sqrt(n * 10);
         int maxHeight = (int) sqrt(n * 10);
         long limit = (long) maxWidth * maxHeight;
-//        if (limit < n) {
-//            throw new Exception("Surface is to small");
-//        }
         this.list = new ArrayList<>(n);
         Random rand = new Random();
         long step = limit / n;
