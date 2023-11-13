@@ -8,7 +8,7 @@ import java.util.Collection;
  *
  * @author apohllo, idzik
  */
-public interface WorldMap<T,P> extends MoveValidator<T> {
+public interface WorldMap<T, P> extends MoveValidator<T> {
 
     /**
      * Place a value on the map.
@@ -41,8 +41,12 @@ public interface WorldMap<T,P> extends MoveValidator<T> {
      * @return animal or null if the position is not occupied.
      */
     P objectAt(T position);
+
     boolean canMoveTo(T position);
 
+    void addSubscriber(MapChangeListener subscriber);
+
+    void removeSubscriber(MapChangeListener subscriber);
 
     Collection getElements();
 }

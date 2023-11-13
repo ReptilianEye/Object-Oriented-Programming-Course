@@ -1,12 +1,18 @@
 package agh.ics.oop.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TextMap implements WorldMap<Integer, String> {
 
+    List<MapChangeListener> subscribers = new LinkedList<>();
+
+    public void addSubscriber(MapChangeListener subscriber) {
+        subscribers.add(subscriber);
+    }
+
+    public void removeSubscriber(MapChangeListener subscriber) {
+        subscribers.remove(subscriber);
+    }
 
     private final ArrayList<TextMapElement> map = new ArrayList<>();
     //    private final ArrayList<AbstractMap.SimpleEntry<String, MapDirection>> map = new ArrayList<>();
