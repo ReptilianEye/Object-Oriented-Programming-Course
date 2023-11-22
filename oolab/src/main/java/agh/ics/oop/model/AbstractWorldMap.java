@@ -1,20 +1,35 @@
 package agh.ics.oop.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-abstract class AbstractWorldMap {
+abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
     protected Map<Vector2d, WorldElement> animals = new HashMap<>();
+    List<MapChangeListener> subscribers = new LinkedList<>();
 
-    public boolean place(WorldElement animal) {
-        if (canMoveTo(animal.getPosition())) {
-            animals.put(animal.getPosition(), animal);
-            return true;
-        }
-        return false;
+    public void addSubscriber(MapChangeListener subscriber) {
+        subscribers.add(subscriber);
     }
 
-    protected WorldElement objectAt(Vector2d position) {
+    public void removeSubscriber(MapChangeListener subscriber) {
+        subscribers.remove(subscriber);
+    }
+
+    private void mapChanged(String message) {
+        for (var sub : subscribers) {
+            sub.mapChanged(this, message);
+        }
+    }
+
+    public void place(WorldElement animal) throws PositionAlreadyOccupiedException {
+        Vector2d newPosition = animal.getPosition();
+        if (!canMoveTo(newPosition)) {
+            throw new PositionAlreadyOccupiedException(newPosition);
+        }
+        animals.put(newPosition, animal);
+        mapChanged("Animal placed on " + newPosition);
+    }
+
+    public WorldElement objectAt(Vector2d position) {
         return animals.get(position);
     }
 
@@ -22,15 +37,31 @@ abstract class AbstractWorldMap {
         return objectAt(position) != null;
     }
 
-    protected boolean canMoveTo(Vector2d position) {
+    public boolean canMoveTo(Vector2d position) {
         return !isOccupied(position);
     }
 
-    public void move(Animal animal, MoveDirection direction, MoveValidator validator) {
+    protected abstract Boundary getCurrentBounds();
+
+    public void move(WorldElement element, MoveDirection direction) {
+        Animal animal = (Animal) element;
         Vector2d prevPos = animal.getPosition();
-        if (!prevPos.equals(animal.move(direction, validator))) {
+        Vector2d newPos = animal.move(direction, this);
+        if (!prevPos.equals(newPos)) {
             animals.remove(prevPos);
-            place(animal);
+            try {
+                place(animal);
+            } catch (
+                    PositionAlreadyOccupiedException ignored) {
+                return;
+            }
+            mapChanged("Animal moved to " + newPos);
         }
+    }
+
+    @Override
+    public String toString() {
+        Boundary boundary = this.getCurrentBounds();
+        return new MapVisualizer(this).draw(boundary.leftCorner(), boundary.rightCorner());
     }
 }

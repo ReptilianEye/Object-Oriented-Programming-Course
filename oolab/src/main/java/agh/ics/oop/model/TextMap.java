@@ -1,12 +1,18 @@
 package agh.ics.oop.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TextMap implements WorldMap<Integer, String> {
 
+    List<MapChangeListener> subscribers = new LinkedList<>();
+
+    public void addSubscriber(MapChangeListener subscriber) {
+        subscribers.add(subscriber);
+    }
+
+    public void removeSubscriber(MapChangeListener subscriber) {
+        subscribers.remove(subscriber);
+    }
 
     private final ArrayList<TextMapElement> map = new ArrayList<>();
     //    private final ArrayList<AbstractMap.SimpleEntry<String, MapDirection>> map = new ArrayList<>();
@@ -15,11 +21,10 @@ public class TextMap implements WorldMap<Integer, String> {
     private int N = 0;
 
     @Override
-    public boolean place(String text) {
+    public void place(String text) {
         map.add(new TextMapElement(text, MapDirection.EAST));
         positions.put(text, N);
         N++;
-        return true;
     }
 
     public void swapPositions(int i, int j) {
@@ -29,7 +34,7 @@ public class TextMap implements WorldMap<Integer, String> {
         // update hashmap
         positions.put(b.text(), i);
         positions.put(a.text(), j);
-        // opdate map
+        // update map
         map.set(i, b);
         map.set(j, a);
     }

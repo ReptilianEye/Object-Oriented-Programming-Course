@@ -15,9 +15,15 @@ class RectangularMapTest {
         RectangularMap map = new RectangularMap(20, 20);
         Animal placed = new Animal(new Vector2d(2, 2));
         Animal outsideBorder = new Animal(new Vector2d(2, 2));
-        Assertions.assertTrue(map.place(placed), "Animal should be placed");
-        Assertions.assertFalse(map.place(placed), "Animal should not be placed if position is occupied");
-        Assertions.assertFalse(map.place(outsideBorder), "Animal outside the border should not be placed");
+        Assertions.assertDoesNotThrow(() -> {
+            map.place(placed);
+        }, "Animal should be placed");
+        Assertions.assertThrows(PositionAlreadyOccupiedException.class, () -> {
+            map.place(placed);
+        }, "Animal should not be placed if position is occupied");
+        Assertions.assertThrows(PositionAlreadyOccupiedException.class, () -> {
+            map.place(outsideBorder);
+        }, "Animal outside the border should not be placed");
     }
 
     @Test
@@ -42,8 +48,13 @@ class RectangularMapTest {
     void isOccupied() {
         RectangularMap map = new RectangularMap(20, 20);
         for (int i = 0; i < 20; i++)
-            for (int j = 0; j < 10; j += 2)
-                map.place(new Animal(new Vector2d(i, j)));
+            for (int j = 0; j < 10; j += 2) {
+                try {
+                    map.place(new Animal(new Vector2d(i, j)));
+                } catch (
+                        PositionAlreadyOccupiedException ignored) {
+                }
+            }
         Vector2d occupied = new Vector2d(2, 2);
         Vector2d free = new Vector2d(2, 5);
         Assertions.assertTrue(map.isOccupied(occupied));
@@ -58,7 +69,11 @@ class RectangularMapTest {
             for (int j = 0; j < 10; j += 2) {
                 Animal temp = new Animal(new Vector2d(i, j));
                 animals.add(temp);
-                map.place(temp);
+                try {
+                    map.place(temp);
+                } catch (
+                        PositionAlreadyOccupiedException ignored) {
+                }
             }
         var animalIt = animals.iterator();
         for (int i = 0; i < 20; i++)
@@ -75,7 +90,12 @@ class RectangularMapTest {
             for (int j = 0; j < 10; j += 2) {
                 Animal temp = new Animal(new Vector2d(i, j));
                 animals.add(temp);
-                map.place(temp);
+                try {
+                    map.place(temp);
+                } catch (
+                        PositionAlreadyOccupiedException ignored) {
+
+                }
             }
         Assertions.assertTrue(map.canMoveTo(new Vector2d(0, 1)));
         Assertions.assertFalse(map.canMoveTo(new Vector2d(-1, -1)));
