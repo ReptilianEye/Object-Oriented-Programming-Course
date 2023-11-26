@@ -24,13 +24,14 @@ public class World {
                 new Vector2d(11, 13));
 //        WorldMap map1 = new RectangularMap(19, 19);
         ConsoleMapDisplay mapDisplay = new ConsoleMapDisplay();
-        WorldMap map2 = new GrassField(19);
-        map2.addSubscriber(mapDisplay);
+//        WorldMap map2 = new GrassField(19);
+//        map2.addSubscriber(mapDisplay);
         List<Simulation> simulations = new LinkedList<>();
-        for (int i = 0; i < 4000000; i++) {
-            WorldMap map1 = new RectangularMap(19, 19);
-            map1.addSubscriber(mapDisplay);
-            simulations.add(new Simulation(Orders1, startingPositions1, map1));
+        for (int i = 0; i < 6000000; i++) {
+            WorldMap map2 = new GrassField(19);
+//            WorldMap map1 = new RectangularMap(19, 19);
+            map2.addSubscriber(mapDisplay);
+            simulations.add(new Simulation(Orders1, startingPositions1, map2));
         }
 //        List<Simulation> simulations = List.of(new Simulation(Orders1, startingPositions1, map1), new Simulation(Orders2, startingPositions2, map2));
         SimulationEngine engine = new SimulationEngine(simulations);
