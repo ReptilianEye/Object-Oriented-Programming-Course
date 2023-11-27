@@ -47,6 +47,7 @@ public interface WorldMap<T, P> extends MoveValidator<T> {
     void addSubscriber(MapChangeListener subscriber);
 
     void removeSubscriber(MapChangeListener subscriber);
+    int getId();
 
     Collection getElements();
 }

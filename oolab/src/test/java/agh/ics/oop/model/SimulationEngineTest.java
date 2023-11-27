@@ -1,18 +1,18 @@
-package agh.ics.oop;
+package agh.ics.oop.model;
 
-
-import agh.ics.oop.model.*;
+import agh.ics.oop.OptionsParser;
+import agh.ics.oop.Simulation;
+import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-public class World {
 
-    public static void main(String[] args) {
-        System.out.println("System wystartował");
+class SimulationEngineTest {
+
+
+    @Test
+    void run() {
         List<MoveDirection> Orders1 = OptionsParser.parse(new String[]{"f", "r", "f", "l", "f", "f", "l", "b", "l", "b",
                 "b", "f", "l", "b", "r", "l", "f", "f", "f", "f", "b", "r", "b", "f", "f"});
         List<Vector2d> startingPositions1 = List.of(new Vector2d(2, 2), new Vector2d(3, 4), new Vector2d(6, 10),
@@ -40,8 +40,5 @@ public class World {
         engine.runAsyncInThreadPool();
 //        engine.awaitSimulationEnd();
         System.out.println(mapDisplay.getEventsIListenedTo());
-        System.out.println("System zakończył działanie");
-
-
     }
 }

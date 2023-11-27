@@ -3,6 +3,17 @@ package agh.ics.oop.model;
 import java.util.*;
 
 public class TextMap implements WorldMap<Integer, String> {
+    private static int globalId = 0;
+
+    private final int id = globalId;
+
+    static {
+        globalId++;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     List<MapChangeListener> subscribers = new LinkedList<>();
 
@@ -98,7 +109,7 @@ public class TextMap implements WorldMap<Integer, String> {
         for (var el : map) {
             out.append("(").append(el.direction().toStringArrows()).append(" ").append(el.text()).append(") ");
         }
-        out.delete(out.length()-1,out.length());
+        out.delete(out.length() - 1, out.length());
         out.append(" |||");
         return out.toString();
     }
