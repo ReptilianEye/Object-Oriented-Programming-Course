@@ -27,11 +27,13 @@ public class World {
 //        WorldMap map2 = new GrassField(19);
 //        map2.addSubscriber(mapDisplay);
         List<Simulation> simulations = new LinkedList<>();
-        for (int i = 0; i < 6000000; i++) {
-            WorldMap map2 = new GrassField(19);
-//            WorldMap map1 = new RectangularMap(19, 19);
-            map2.addSubscriber(mapDisplay);
-            simulations.add(new Simulation(Orders1, startingPositions1, map2));
+        for (int i = 0; i < 1000; i++) {
+//            WorldMap map2 = new GrassField(19);
+            WorldMap map1 = new RectangularMap(19, 19);
+//            map2.addSubscriber(mapDisplay);
+            map1.addSubscriber(mapDisplay);
+//            simulations.add(new Simulation(Orders1, startingPositions1, map2));
+            simulations.add(new Simulation(Orders1, startingPositions1, map1));
         }
 //        List<Simulation> simulations = List.of(new Simulation(Orders1, startingPositions1, map1), new Simulation(Orders2, startingPositions2, map2));
         SimulationEngine engine = new SimulationEngine(simulations);
