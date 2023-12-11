@@ -6,7 +6,6 @@ import java.util.List;
 public class RectangularMap extends AbstractWorldMap {
 
     private final Vector2d lowerLeftBound, upperRightBound;
-
     public RectangularMap(int width, int height) {
         this.lowerLeftBound = new Vector2d(0, 0);
         this.upperRightBound = new Vector2d(width, height);

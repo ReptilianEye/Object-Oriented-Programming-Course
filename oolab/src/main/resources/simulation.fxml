@@ -19,9 +19,13 @@
             </HBox>
             <VBox spacing="5">
                 <GridPane fx:id="mapGrid" gridLinesVisible="true" alignment="CENTER"/>
-                <HBox alignment="CENTER">
+                <VBox alignment="CENTER">
                     <Label fx:id="description"></Label>
-                </HBox>
+                    <HBox>
+                        <Label text="Simulation state: "/>
+                        <Label fx:id="simulationState"/>
+                    </HBox>
+                </VBox>
             </VBox>
         </VBox>
     </center>

@@ -7,7 +7,6 @@ import static java.lang.Thread.sleep;
 abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
     protected Map<Vector2d, WorldElement> animals = new HashMap<>();
     List<MapChangeListener> subscribers = new LinkedList<>();
-
     private static int globalId = 0;
     private final int id;
 
