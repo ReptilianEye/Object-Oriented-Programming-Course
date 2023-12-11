@@ -48,7 +48,7 @@ public class GrassField extends AbstractWorldMap{
         return rightBound;
     }
     @Override
-    protected Boundary getCurrentBounds() {
+    public Boundary getCurrentBounds() {
         return new Boundary(lowerLeftBound(),upperRightBound());
     }
 

@@ -22,7 +22,7 @@ public class RectangularMap extends AbstractWorldMap {
     }
 
     @Override
-    protected Boundary getCurrentBounds() {
+    public Boundary getCurrentBounds() {
         return new Boundary(lowerLeftBound,upperRightBound);
     }
 

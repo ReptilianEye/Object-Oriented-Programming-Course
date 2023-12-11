@@ -103,6 +103,11 @@ public class TextMap implements WorldMap<Integer, String> {
     }
 
     @Override
+    public Boundary getCurrentBounds() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
         out.append("||| ");
