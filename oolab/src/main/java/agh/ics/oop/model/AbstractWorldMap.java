@@ -2,12 +2,14 @@ package agh.ics.oop.model;
 
 import java.util.*;
 
+import static java.lang.Thread.sleep;
+
 abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
     protected Map<Vector2d, WorldElement> animals = new HashMap<>();
     List<MapChangeListener> subscribers = new LinkedList<>();
-
     private static int globalId = 0;
     private final int id;
+
     {
         id = globalId;
         globalId++;
@@ -52,12 +54,14 @@ abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
         return !isOccupied(position);
     }
 
-    protected abstract Boundary getCurrentBounds();
+    public abstract Boundary getCurrentBounds();
 
     public void move(WorldElement element, MoveDirection direction) {
         Animal animal = (Animal) element;
         Vector2d prevPos = animal.getPosition();
+        MapDirection prevOrientation = animal.getOrientation();
         Vector2d newPos = animal.move(direction, this);
+        MapDirection newOrientation = animal.getOrientation();
         if (!prevPos.equals(newPos)) {
             animals.remove(prevPos);
             try {
@@ -66,7 +70,17 @@ abstract class AbstractWorldMap implements WorldMap<Vector2d, WorldElement> {
                     PositionAlreadyOccupiedException ignored) {
                 return;
             }
-            mapChanged("Animal moved to " + newPos);
+
+        }
+        if (!prevPos.equals(newPos)) {
+            mapChanged("Animal from " + prevPos + " moved to " + newPos);
+        } else if (!prevOrientation.equals(newOrientation)) {
+            mapChanged("Animal rotated from " + prevOrientation + " to " + newOrientation);
+        }
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
