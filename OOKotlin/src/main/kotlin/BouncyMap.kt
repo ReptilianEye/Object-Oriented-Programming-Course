@@ -17,6 +17,7 @@ class BouncyMap(width: Int, height: Int) : IWorldMap {
 
     }
 
+
     override fun move(element: Animal, direction: MoveDirection) {
         val prevPos = element.getPosition()
         val newPos = element.move(direction, this)
