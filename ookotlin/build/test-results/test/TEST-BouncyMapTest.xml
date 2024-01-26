@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BouncyMapTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-01-26T17:10:34" hostname="DESKTOP-GUJG6OT" time="0.256">
+<testsuite name="BouncyMapTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-01-26T17:19:48" hostname="DESKTOP-GUJG6OT" time="0.341">
   <properties/>
-  <testcase name="place correctly when free space" classname="BouncyMapTest" time="0.043"/>
-  <testcase name="place and bounce" classname="BouncyMapTest" time="0.181"/>
-  <testcase name="place and replace if no slots are available" classname="BouncyMapTest" time="0.002"/>
-  <testcase name="move" classname="BouncyMapTest" time="0.004"/>
+  <testcase name="place correctly when free space" classname="BouncyMapTest" time="0.061"/>
+  <testcase name="place and bounce" classname="BouncyMapTest" time="0.247"/>
+  <testcase name="place and replace if no slots are available" classname="BouncyMapTest" time="0.003"/>
+  <testcase name="move" classname="BouncyMapTest" time="0.006"/>
   <testcase name="isOccupied" classname="BouncyMapTest" time="0.001"/>
-  <testcase name="objectAt" classname="BouncyMapTest" time="0.002"/>
-  <testcase name="canMoveTo" classname="BouncyMapTest" time="0.002"/>
+  <testcase name="objectAt" classname="BouncyMapTest" time="0.001"/>
+  <testcase name="canMoveTo" classname="BouncyMapTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
