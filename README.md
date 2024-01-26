@@ -9,7 +9,7 @@ exercises: https://github.com/Soamid/obiektowe-lab
 The repository is divided into two main directories:
 
 1. [oolab](oolab/): Contains Java labs exercises solutions.
-2. [OOKotlin](OOKotlin/): Contains Kotlin additional project solutions.
+2. [ookotlin](ookotlin/): Contains Kotlin additional project solutions.
 
 Each directory has its own build scripts and source code.
 
