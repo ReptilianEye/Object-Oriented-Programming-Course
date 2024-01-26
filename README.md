@@ -1,10 +1,31 @@
-# PO_2023_PON1640_RZADKOWSKI
+# Objective Programming Java Course Exercises
 
-## Piotr Rzadkowski
+This repository contains solutions for exercises in the Objective Programming Java course.
 
-grupa nr. 15 	16:40
+exercises: https://github.com/Soamid/obiektowe-lab
 
-my pet name: **Lucky Reptile**
+## Structure
 
-## my https://gitexercises.fracz.com profile: https://gitexercises.fracz.com/committer/d79ff243289415ddd10070bd066634fc3d5eb188
+The repository is divided into two main directories:
 
+1. [oolab](oolab/): Contains Java labs exercises solutions.
+2. [OOKotlin](OOKotlin/): Contains Kotlin additional project solutions.
+
+Each directory has its own build scripts and source code.
+
+## Building and Running
+
+For both directories, you can use the provided Gradle wrapper to build and run the projects:
+
+```sh
+./gradlew build
+./gradlew run
+```
+
+## Additional Tasks
+
+At the start of the course, we were required to complete Git exercises from https://gitexercises.fracz.com. I successfully completed all of them, and you can find my solutions at https://gitexercises.fracz.com/committer/d79ff243289415ddd10070bd066634fc3d5eb188.
+
+## License
+
+MIT
