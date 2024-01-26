@@ -28,4 +28,6 @@ At the start of the course, we were required to complete Git exercises from http
 
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)
+
+For more details, please refer to the [license.md](license.md) file.
